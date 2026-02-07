@@ -1,0 +1,319 @@
+type: collection.insomnia.rest/5.0
+schema_version: "5.1"
+name: API Refund
+meta:
+  id: wrk_e4b1b73d5ec54e788eb31e2edb7e8fca
+  created: 1770486033982
+  modified: 1770486033982
+  description: ""
+collection:
+  - name: Users
+    meta:
+      id: fld_5f6c09835299457fbfddd130fcb92a1a
+      created: 1770486220623
+      modified: 1770486404130
+      sortKey: -1770486220623
+      description: ""
+    children:
+      - url: "{{ _[''].baseUrl }}/{{ _[''][''][''].RESOURCE }}"
+        name: Create
+        meta:
+          id: req_ccd990d07e4e4db8baef51c91bc51d69
+          created: 1770486223635
+          modified: 1770489558319
+          isPrivate: false
+          description: ""
+          sortKey: -1770486223635
+        method: POST
+        body:
+          mimeType: application/json
+          text: |-
+            {
+            	"name": "Rafael",
+            	"email": "rafaelalex@email.com",
+            	"password": "1234567"
+            }
+        headers:
+          - name: Content-Type
+            value: application/json
+          - name: User-Agent
+            value: insomnia/12.3.0
+            description: ""
+            disabled: false
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+    environment:
+      "":
+        "":
+          "":
+            RESOURCE: users
+  - name: Sessions
+    meta:
+      id: fld_8907273fd0f54b418f179170a087e70b
+      created: 1770486876379
+      modified: 1770488994694
+      sortKey: -1770486876379
+      description: ""
+    children:
+      - url: "{{ _[''].baseUrl }}/{{ _[''][''][''].RESOURCE }}"
+        name: Create
+        meta:
+          id: req_12bfacb73c4846afb593f585f7470bda
+          created: 1770486920371
+          modified: 1770489989503
+          isPrivate: false
+          description: ""
+          sortKey: -1770486920371
+        method: POST
+        body:
+          mimeType: application/json
+          text: |-
+            {
+              "email": "romuloalex@email.com",
+              "password": "1234567"
+            }
+        headers:
+          - name: Content-Type
+            value: application/json
+          - name: User-Agent
+            value: insomnia/12.3.0
+            description: ""
+            disabled: false
+        authentication:
+          type: none
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+    environment:
+      "":
+        "":
+          "":
+            RESOURCE: sessions
+  - name: Refunds
+    meta:
+      id: fld_c060cd799dd642c6a469c4edc3a4913b
+      created: 1770488962017
+      modified: 1770490152775
+      sortKey: -1770488962017
+      description: ""
+    children:
+      - url: "{{ _[''].baseUrl }}/{{ _[''][''][''].RESOURCE }}"
+        name: Create
+        meta:
+          id: req_97ff98b0b4744258813c96e38a31da1d
+          created: 1770488998228
+          modified: 1770489549709
+          isPrivate: false
+          description: ""
+          sortKey: -1770488998228
+        method: POST
+        body:
+          mimeType: application/json
+          text: |-
+            {
+              "name": "Almoço com Cliente",
+              "category": "food",
+              "amount": 5500,
+              "filename": "comprovante-upload-anterior.jpg"
+            }
+        headers:
+          - name: Content-Type
+            value: application/json
+          - name: User-Agent
+            value: insomnia/12.3.0
+            description: ""
+            disabled: false
+        authentication:
+          type: bearer
+          token: "{% response 'body', 'req_12bfacb73c4846afb593f585f7470bda',
+            'b64::JC50b2tlbg==::46b', 'always', 60 %}"
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: "{{ _[''].baseUrl }}/{{ _[''][''][''].RESOURCE }}"
+        name: Obter todos
+        meta:
+          id: req_4905906e42484631a5fcce7e36a7bf4a
+          created: 1770489245461
+          modified: 1770489534247
+          isPrivate: false
+          description: ""
+          sortKey: -1770489245461
+        method: GET
+        headers:
+          - name: User-Agent
+            value: insomnia/12.3.0
+            description: ""
+            disabled: false
+        authentication:
+          type: bearer
+          token: "{% response 'body', 'req_12bfacb73c4846afb593f585f7470bda',
+            'b64::JC50b2tlbg==::46b', 'always', 60 %}"
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: "{{ _[''].baseUrl }}/{{ _[''][''][''].RESOURCE
+          }}/0108491d-0421-4f0e-9b66-9e46941166ed"
+        name: Obter por ID
+        meta:
+          id: req_0c06d2634ee44893a6203e8c09072374
+          created: 1770489459603
+          modified: 1770489541909
+          isPrivate: false
+          description: ""
+          sortKey: -1770489121844.5
+        method: GET
+        headers:
+          - name: User-Agent
+            value: insomnia/12.3.0
+            description: ""
+            disabled: false
+        authentication:
+          type: bearer
+          token: "{% response 'body', 'req_12bfacb73c4846afb593f585f7470bda',
+            'b64::JC50b2tlbg==::46b', 'always', 60 %}"
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+    environment:
+      "":
+        "":
+          "":
+            RESOURCE: refunds
+  - name: Uploads
+    meta:
+      id: fld_6ebdac51e8a44bf5afa145013c94a332
+      created: 1770490023491
+      modified: 1770490097606
+      sortKey: -1770490023491
+      description: ""
+    children:
+      - url: "{{ _[''].baseUrl }}/{{ _[''][''][''].RESOURCE }}"
+        name: New Request
+        meta:
+          id: req_1009df4331334dd792625dbf2c251a5f
+          created: 1770490028162
+          modified: 1770495823932
+          isPrivate: false
+          description: ""
+          sortKey: -1770490028162
+        method: POST
+        body:
+          mimeType: multipart/form-data
+          params:
+            - name: file
+              value: ""
+              description: ""
+              disabled: false
+              fileName: C:\Users\Rômulo Alexandre\Pictures\whatsapp.png
+              type: file
+        headers:
+          - name: Content-Type
+            value: multipart/form-data
+          - name: User-Agent
+            value: insomnia/12.3.0
+            description: ""
+            disabled: false
+        authentication:
+          type: bearer
+          token: "{% response 'body', 'req_12bfacb73c4846afb593f585f7470bda',
+            'b64::JC50b2tlbg==::46b', 'always', 60 %}"
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: "{{ _[''].baseUrl }}/{{ _[''][''][''].RESOURCE
+          }}/d5cb95b01f2906edd3fc-whatsapp.png"
+        name: New Request
+        meta:
+          id: req_f03b02526433438c93b79e07d585f111
+          created: 1770495950439
+          modified: 1770496045792
+          isPrivate: false
+          description: ""
+          sortKey: -1770495950439
+        method: GET
+        headers:
+          - name: User-Agent
+            value: insomnia/12.3.0
+            description: ""
+            disabled: false
+        authentication:
+          type: bearer
+          token: "{% response 'body', 'req_12bfacb73c4846afb593f585f7470bda',
+            'b64::JC50b2tlbg==::46b', 'always', 60 %}"
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+    environment:
+      "":
+        "":
+          "":
+            RESOURCE: uploads
+cookieJar:
+  name: Default Jar
+  meta:
+    id: jar_977d572fae86b1798b08ad1fb2c9eebe4b90c804
+    created: 1770486034034
+    modified: 1770486034034
+environments:
+  name: Base Environment
+  meta:
+    id: env_977d572fae86b1798b08ad1fb2c9eebe4b90c804
+    created: 1770486033993
+    modified: 1770486033993
+    isPrivate: false
+  subEnvironments:
+    - name: Dev
+      meta:
+        id: env_98bc8e4e3e2b498bba18f608fbe8c021
+        created: 1770486045625
+        modified: 1770486207162
+        isPrivate: false
+        sortKey: 1770486045625
+      data:
+        "":
+          baseUrl: http://localhost:3333
+      color: "#04ff00"
+    - name: Prod
+      meta:
+        id: env_30c0dcb87c9b43b99633382a2eb8da59
+        created: 1770486049193
+        modified: 1770486071925
+        isPrivate: false
+        sortKey: 1770486049193
